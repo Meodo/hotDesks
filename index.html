@@ -5,5 +5,20 @@
   <title>hot desks</title>
 </head>
 <body>
+  <div id='display'>0</div>
+  <script type="text/javascript">
+  var display = document.getElementById('display');
+
+  timeLoop();
+  function timeLoop() {
+    checkUpdate(display);
+    setTimeout(timeLoop,1000);
+  }
+
+
+  function checkUpdate(display) {
+  }
+
+</script>
 </body>
 </html>
