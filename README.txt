@@ -12,7 +12,8 @@ J'espere que c'est clair, N'hesite pas a demander si ce ne l'est pas.
 
 
 -- Schedule
-1)include dwg / dwf file in html
+1)include dwg / dwf file in html ==> done on IE with dwf reviewer
 2)localize desks on dwg / dwf file
 3)see how to change color on this type of file
 4)check the LoRaWAN API to get signal
+  -> connect to robot that will send information

@@ -1,24 +1,80 @@
 <!DOCTYPE html>
 <html>
-<head>
-  <meta charset="utf-8" />
-  <title>hot desks</title>
-</head>
-<body>
-  <div id='display'>0</div>
-  <script type="text/javascript">
-  var display = document.getElementById('display');
+  <head>
+    <meta charset="utf-8" />
+    <title>hot desks</title>
 
-  timeLoop();
-  function timeLoop() {
-    checkUpdate(display);
-    setTimeout(timeLoop,1000);
-  }
+  </head>
+  <body>
+    <script src="https://code.jquery.com/jquery-1.9.1.min.js"></script>
+    <script src="https://d3js.org/d3.v4.js"></script>
+  <!--
+    Could be used to embed directly the dwf file in the web page but only usable on IE
+    <OBJECT CLASSID="clsid:A662DA7E-CCB7-4743-B71A-D817F6D575DF"
+    CODEBASE=http://www.autodesk.com/global/dwfviewer/installer/
+    DwfViewerSetup.cab#version=7,0,0,928
+    WIDTH="1200" HEIGHT="800">
+    <PARAM NAME="Src"
+    VALUE="WIN-WMW-00-GA-M.dwf">
+    </OBJECT>
+  -->
 
 
-  function checkUpdate(display) {
-  }
+  <!--
+    embed as pdf :
+  <embed src="WIN-WMW-00-GA-M-General Arrangement.pdf" style="position: absolute;width : 100%;height : 100%" type='application/pdf'>
+  -->
 
-</script>
-</body>
+    <svg id="map" width="1600" height="1200"></svg>
+
+
+    <script type="text/javascript">
+
+    $( document ).ready( function() {
+
+      var svg = d3.select("body").select("svg");
+
+      d3.xml("WIN-WMW-00-GA-M.svg").mimeType("image/svg+xml").get(function(error, xml) {
+        if (error) throw error;
+        document.getElementById("map").appendChild(document.createElement("g").appendChild(xml.documentElement));
+        var path = d3.select("path");
+        console.log(path);
+        for (var i =0 ; i < path.length; i++) {
+          path[i].on("click", function(d) {console.log(this.attr("d"));});
+        }
+      })
+
+        appendDesks();
+
+
+      function appendDesks() {
+        var g = svg.append("g")
+
+        function appendDesk(id, x, y, width, height) {
+          g.append("rect")
+          .attr("id", "rect" + id)
+          .attr("width", width)
+          .attr("height", height)
+          .attr("x", x)
+          .attr("y", y)
+          .style("fill", "green")
+          .on("click", function() {
+            if (d3.select(this).style("fill") == "red") {
+              d3.select(this).style("fill", "green");
+            } else {
+              d3.select(this).style("fill", "red");
+            }
+          });
+        }
+        appendDesk(1,300,300,10,10);
+        appendDesk(2,200,300,10,10);
+        appendDesk(3,200,200,10,10);
+
+      }
+    });
+
+    </script>
+
+
+  </body>
 </html>
