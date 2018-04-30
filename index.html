@@ -1,16 +1,23 @@
 <!DOCTYPE html>
 <html>
-<head>
-  <meta charset="utf-8" />
-  <title>hot desks with png image </title>
-   <link rel="stylesheet" href="css/tooltip.css">
-   <link rel="stylesheet" href="css/body.css">
-</head>
-<body>
-  <svg id="hotDesksMapSvg" width="1000" height="1000"></svg>
+  <head>
+    <meta charset="utf-8" />
+    <title>hot desks with png image </title>
+     <link rel="stylesheet" href="css/tooltip.css">
+     <link rel="stylesheet" href="css/style.css">
+  </head>
+  <body>
+
+      <svg class="svg-desks" id="hotDesksMapSvg" top="0" left="0" width="1000" height="500">
+          xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+  	     <image xlink:href="desks2.png" x="0" y="0" width="1000" height="500"/>
+         <g width="100%" height="100%">
+         </g>
+      </svg>
+
     <script src="https://code.jquery.com/jquery-1.9.1.min.js"></script>
     <script src="https://d3js.org/d3.v4.min.js"></script>
     <script src="js/createDesksTable.js"></script>
     <script src="js/hotDesks.js"></script>
   </body>
-  </html>
+</html>

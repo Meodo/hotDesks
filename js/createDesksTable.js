@@ -1,20 +1,24 @@
 // Desks initialisation
 function createMapTable() {
   var map = []
-  addDesk(map, 200,100,1,true);
-  addDesk(map, 200,120,2,false);
-  addDesk(map, 200,140,3,true);
-  addDesk(map, 200,160,4,false);
-  addDesk(map, 200,180,5,true);
-  addDesk(map, 200,200,6,false);
+  addDesk(map, 1, 120, 45, 21, 14, true);
+  addDesk(map, 2, 110, 102, 21, 14, true);
+  addDesk(map, 3, 108, 156, 21, 14, false);
+  addDesk(map, 4, 107, 216, 21, 15, false);
+  addDesk(map, 5, 214, 43, 21, 14, false);
+  addDesk(map, 6, 210, 99, 19, 12, false);
+  addDesk(map, 7, 211, 136, 20, 13, false);
+  addDesk(map, 8, 211, 173, 21, 16, false);
   return map
 }
 
-function addDesk(map, relativeX, relativeY, number, isUsed) {
+function addDesk(map, number, relativeX, relativeY, relativeWidth, relativeHeight, isUsed) {
   map[number] = {
     coordinates : {
       x : relativeX,
-      y : relativeY
+      y : relativeY,
+      width : relativeWidth,
+      height : relativeHeight
     },
     used : isUsed
   };
